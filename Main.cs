@@ -1,12 +1,15 @@
 ﻿using BepInEx;
 using HarmonyLib;
 using ROUNDSCommons.Commands;
+using System.Collections.Generic;
 
 namespace ROUNDSCommons
 {
     // Tells BepIn what process the mod is using
     [BepInProcess("Rounds.exe")]
     [BepInPlugin(ModId, ModName, Version)]
+
+    [BepInDependency("com.bosssloth.rounds.BetterChat", BepInDependency.DependencyFlags.HardDependency)]
     public class CommonsPlugin : BaseUnityPlugin
     {
         private const string ModId = "dev.sub5allts.rounds.commons";
@@ -16,14 +19,15 @@ namespace ROUNDSCommons
         public static CommonsPlugin instance { get; private set; }
 
         public Logger logger { get; private set; }
-
         public CommandManager commandManager { get; private set; }
 
         void Awake()
         {
             logger = new Logger(ModName);
-            commandManager = new CommandManager();
             instance = this;
+
+            commandManager = gameObject.AddComponent<CommandManager>();
+            commandManager.AddCommand(new TestCommands.KillCommand());
 
             var harmony = new Harmony(ModId);
             harmony.PatchAll();
@@ -31,9 +35,13 @@ namespace ROUNDSCommons
 
         void Start()
         {
-            // commandManager.AddCommand(new TestCommand());
-            commandManager.AddCommand(new ClearBotsCommand());
-            commandManager.AddCommand(new CardCommands.GiveCard());
+            int i = 0;
+            foreach (var command in commandManager.AllCommands())
+            {
+                logger.Log($"Registering command {command.Details.Name}");
+                i++;
+            }
+            logger.Log($"Registered {i} commands");
         }
     }
 

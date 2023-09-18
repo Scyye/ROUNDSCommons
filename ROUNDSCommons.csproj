@@ -10,40 +10,73 @@
       <HintPath>..\..\..\Downloads\Justin Run 2 Demo\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\CardLimit\CardLimit\DLLs\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\ROUNDSDLLS\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>..\CardLimit\CardLimit\DLLs\BepInEx.dll</HintPath>
+      <HintPath>..\ROUNDSDLLS\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="BetterChat">
       <HintPath>..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\testing clean\BepInEx\plugins\BossSloth-BetterChat\BetterChat.dll</HintPath>
     </Reference>
     <Reference Include="ModdingUtils">
-      <HintPath>..\CardLimit\CardLimit\DLLs\ModdingUtils.dll</HintPath>
+      <HintPath>..\ROUNDSDLLS\ModdingUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="ModsPlus">
+      <HintPath>..\ROUNDSDLLS\ModsPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\ROUNDSDLLS\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>..\ROUNDSDLLS\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>..\ROUNDSDLLS\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>..\ROUNDSDLLS\Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="PhotonRealtime">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ROUNDS\Rounds_Data\Managed\PhotonRealtime.dll</HintPath>
     </Reference>
     <Reference Include="PhotonUnityNetworking">
-      <HintPath>..\CardLimit\CardLimit\DLLs\PhotonUnityNetworking.dll</HintPath>
+      <HintPath>..\ROUNDSDLLS\PhotonUnityNetworking.dll</HintPath>
     </Reference>
     <Reference Include="RarityLib">
-      <HintPath>..\CardLimit\CardLimit\DLLs\RarityLib.dll</HintPath>
+      <HintPath>..\ROUNDSDLLS\RarityLib.dll</HintPath>
+    </Reference>
+    <Reference Include="RoundsWithFriends">
+      <HintPath>..\ROUNDSDLLS\RoundsWithFriends.dll</HintPath>
     </Reference>
     <Reference Include="UnboundLib">
-      <HintPath>..\CardLimit\CardLimit\DLLs\UnboundLib.dll</HintPath>
+      <HintPath>..\ROUNDSDLLS\UnboundLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ROUNDS\Rounds_Data\Managed\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\CardLimit\CardLimit\DLLs\UnityEngine.dll</HintPath>
+      <HintPath>..\ROUNDSDLLS\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\CardLimit\CardLimit\DLLs\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\ROUNDSDLLS\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\ROUNDSDLLS\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>..\ROUNDSDLLS\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreModule">
+      <HintPath>..\ROUNDSDLLS\UnityEngine.TextCoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\ROUNDSDLLS\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\..\Downloads\Justin Run 2 Demo\Justin run 2_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\ROUNDSDLLS\UnityEngine.UIModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 

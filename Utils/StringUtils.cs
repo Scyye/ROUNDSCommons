@@ -3,9 +3,9 @@ using System.Text;
 
 namespace ROUNDSCommons.Utils
 {
-    public class StringUtils
+    public static class StringUtils
     {
-        public static string[] FuckingSplitAGodDamnStringWhyTheFuckIsStringDotSplitNotDefinedProperly(string str, char splitChar) 
+        public static string[] FuckingSplitAGodDamnStringWhyTheFuckIsStringDotSplitNotDefinedProperly(this string str, char splitChar) 
         {
             StringBuilder builder = new StringBuilder();
             List<string> result = new List<string>(); 

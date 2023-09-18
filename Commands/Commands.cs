@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BepInEx;
 using BetterChat;
 using HarmonyLib;
 using JetBrains.Annotations;
 using Photon.Pun;
+using Photon.Realtime;
 using ROUNDSCommons.Utils;
+using UnityEngine;
 
 namespace ROUNDSCommons.Commands
 {
@@ -36,7 +39,7 @@ namespace ROUNDSCommons.Commands
             CommonsPlugin.instance.logger.Log("message sent..." + " " + message);
             if (message.StartsWith("!"))
             {
-                ExecuteCommand(message, PlayerUtils.GetPlayerFromName(playerName));
+                ChatMonoGameManager.Instance.CreateLocalMessage("", null, "SYSTEM", 2, ExecuteCommand(message, PlayerUtils.GetPlayerFromName(playerName)).Message);
                 return false;
             }
             return true;
@@ -56,18 +59,36 @@ namespace ROUNDSCommons.Commands
             string[] args = new string[splitMessage.Length];
             Array.Copy(splitMessage, 1, args, 0, splitMessage.Length-1);
 
-            Command? c = CommonsPlugin.instance.commandManager.GetCommand(command);
+            Command? c = null;
+
+            foreach (var cmd in CommonsPlugin.instance.commandManager.AllCommands())
+            {
+                if (cmd.Details.Name.ToLower().Equals(command.ToLower()))
+                { c = cmd; break; }
+            }
 
             if (c == null)
-                return Command.CommandResponse.DefaultNoSuccess;
+                return new Command.CommandResponse
+                {
+                    Message = "Unknown Command",
+                    Success = false
+                };
 
             if (c.Details.Scope==Command.CommandScope.Host&&!player.data.view.Owner.IsMasterClient)
-                return Command.CommandResponse.DefaultNoSuccess;
+                return new Command.CommandResponse
+                {
+                    Message = "Only the host can do this!",
+                    Success = false
+                };
 
             if (c.Details.Scope == Command.CommandScope.Sandbox && !PhotonNetwork.OfflineMode)
-                return Command.CommandResponse.DefaultNoSuccess;
-                
-            
+                return new Command.CommandResponse
+                {
+                    Message = "Only available in sandbox!",
+                    Success = false
+                };
+
+
 
             return c.Execute(new Command.CommandEvent
             {
@@ -78,11 +99,13 @@ namespace ROUNDSCommons.Commands
         }
     }
 
-    public class CommandManager
+    public class CommandManager : MonoBehaviour
     {
         private List<Command> commands = new List<Command>();
 
-        public Command GetCommand(string command)
+        private CommandManager() { }
+
+        public Command? GetCommand(string command)
         {
             foreach (var cmd in commands)
             {
@@ -110,6 +133,7 @@ namespace ROUNDSCommons.Commands
     public abstract class Command
     {
         public abstract CommandDetails Details { get; }
+
 
         public class CommandDetails
         {
